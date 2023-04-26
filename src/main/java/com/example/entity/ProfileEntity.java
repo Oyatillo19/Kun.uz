@@ -7,11 +7,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-
 @Getter
 @Setter
-@Table(name = "profile")
-@Entity
+@Table
+@Entity(name ="profile")
 public class ProfileEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +35,9 @@ public class ProfileEntity {
     private Boolean visible = Boolean.TRUE;
     @Column(name = "created_date")
     private LocalDateTime createdDate = LocalDateTime.now();
-    // photo_id
+    @Column(name = "updated_date")
+    private LocalDateTime updatedDate;
     @Column(name = "prt_id")
     private Integer prtId;
+    // photo_id
 }
