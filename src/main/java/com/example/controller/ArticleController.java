@@ -20,11 +20,13 @@ public class ArticleController {
     private ArticleService articleService;
 
     @PostMapping({"", "/"})
+
     public ResponseEntity<ArticleDTO> create(@RequestBody ArticleDTO dto,
                                              @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR);
         return ResponseEntity.ok(articleService.create(dto, jwtDTO.getId()));
     }
+
 
     @PutMapping (value = "/update")
     public ResponseEntity<?> update(@RequestBody ArticleDTO dto,
@@ -33,6 +35,7 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.update(dto,jwtDTO.getId()));
     }
 
+
     @PutMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") String id) {
@@ -40,17 +43,20 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.delete(id));
     }
 
+
     @PutMapping(value = "/changeStatus/{id}")
     public ResponseEntity<?> changeStatus(@RequestHeader("Authorization") String authorization,
                                           @PathVariable("id") String id) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.PUBLISHER);
         return ResponseEntity.ok(articleService.changeStatus(id,jwtDTO.getId()));
     }
+
     @GetMapping(value = "/getLastFiveArticleByType/{id}")
     public ResponseEntity<List<ArticleDTO>> getLastFiveArticleByType(@PathVariable("id") Integer articleId) {
         List<ArticleDTO> list = articleService.findLastFiveArticleByType(articleId);
         return ResponseEntity.ok(list);
     }
+
     @GetMapping(value = "/getLastThreeArticleByType/{id}")
     public ResponseEntity<List<ArticleDTO>> getLastThreeArticleByType(@PathVariable("id") Integer articleId) {
         List<ArticleDTO> list = articleService.findLastThreeArticleByType(articleId);

@@ -46,12 +46,14 @@ public class ArticleService {
         return dto;
     }
 
+
     public void isValidProfile(ArticleDTO dto) {
         Optional<ArticleEntity> optional = articleRepository.findAllByTitle(dto.getTitle());
         if (optional.isPresent()) {
             throw new MethodNotAllowedException("This Article already use :)");
         }
     }
+
 
     public boolean update(ArticleDTO dto, Integer id) {
         ArticleEntity entity = get(dto.getId());
@@ -70,6 +72,7 @@ public class ArticleService {
         return true;
     }
 
+
     public ArticleEntity get(String id) {
         Optional<ArticleEntity> optional = articleRepository.findById(id);
         if (optional.isEmpty()) {
@@ -77,6 +80,7 @@ public class ArticleService {
         }
         return optional.get();
     }
+
 
     public Boolean delete(String id) {
         ArticleEntity entity = get(id);
@@ -86,6 +90,7 @@ public class ArticleService {
         articleRepository.changeVisible(Boolean.FALSE, ArticleStatus.NOTPUBLISHED, id);
         return true;
     }
+
 
     public Boolean changeStatus(String id, Integer publisherId) {
         ArticleEntity entity = get(id);
@@ -130,6 +135,7 @@ public class ArticleService {
         });
         return dtoList;
     }
+
     public List<ArticleEntity> convertToEntity(List<ArticleDTO> dtoList){
         List<ArticleEntity> entityList = new LinkedList<>();
         dtoList.forEach(dto ->{

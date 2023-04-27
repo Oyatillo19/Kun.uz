@@ -20,13 +20,16 @@ public interface ArticleRepository extends CrudRepository<ArticleEntity,Integer>
     @Query("update article set visible = :visible, status = :status where id = :id")
     Integer changeVisible(@Param("visible") Boolean visible, @Param("status") ArticleStatus status, @Param("id") String id);
 
+
     @Transactional
     @Modifying
     @Query("update article set visible = :visible, status = :status where id = :id")
     Integer changeStatus(@Param("visible") Boolean visible, @Param("status") ArticleStatus status, @Param("id") String id);
 
+
     @Query("FROM article WHERE articleType.id =:articleTypeId ORDER BY createdDate DESC limit 5")
     List<ArticleEntity> findLastFiveArticleByType(@Param("articleTypeId") Integer articleTypeId);
+
     @Query("FROM article WHERE articleType.id =:articleTypeId ORDER BY createdDate DESC limit 3")
     List<ArticleEntity> findLastThreeArticleByType(@Param("articleTypeId") Integer articleTypeId);
 }

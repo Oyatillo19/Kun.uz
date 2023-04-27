@@ -92,7 +92,8 @@ public class AttachService {
         }
         return new byte[0];
     }
-    public String saveToSystem3(MultipartFile file) {
+
+    public String save(MultipartFile file) {
         try {
             String pathFolder = getYmDString(); // 2022/04/23
             File folder = new File("attaches/" + pathFolder);  // attaches/2023/04/26
@@ -119,6 +120,7 @@ public class AttachService {
         }
         return null;
     }
+
     public byte[] open_general2(String attachName) {
         // 20f0f915-93ec-4099-97e3-c1cb7a95151f.jpg
         int lastIndex = attachName.lastIndexOf(".");
@@ -134,6 +136,7 @@ public class AttachService {
         }
         return new byte[0];
     }
+
     public AttachEntity get(String id) {
         return attachRepository.findById(id).orElseThrow(() -> {
             throw new ItemNotFoundException("Attach not ound");

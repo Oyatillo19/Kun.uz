@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Entity
 public class AttachEntity {
     @Id
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     @Column(name = "original_name")
     private String originalName;
@@ -24,5 +23,5 @@ public class AttachEntity {
     @Column
     private String extension;
     @Column(name = "created_date")
-    private LocalDateTime createdData;
+    private LocalDateTime createdData=LocalDateTime.now();
 }
