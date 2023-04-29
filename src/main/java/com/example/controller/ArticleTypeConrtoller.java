@@ -42,6 +42,7 @@ public class ArticleTypeConrtoller {
         return ResponseEntity.ok(response);
     }
 
+
     @PutMapping(value = "/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") Integer id) {
@@ -55,5 +56,6 @@ public class ArticleTypeConrtoller {
         List<String> list = articleService.getByLang(lang);
         return ResponseEntity.ok(list);
     }
+
 
 }

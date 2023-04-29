@@ -29,6 +29,7 @@ public class AttachController {
         }
         return null;
     }
+
     @GetMapping(value = "/open_general/{fileName}", produces = MediaType.ALL_VALUE)
     public byte[] open_general(@PathVariable("fileName") String fileName) {
         return attachService.open_general(fileName);

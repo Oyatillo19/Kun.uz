@@ -28,6 +28,7 @@ public class ArticleController {
     }
 
 
+
     @PutMapping (value = "/update")
     public ResponseEntity<?> update(@RequestBody ArticleDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
@@ -51,11 +52,13 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.changeStatus(id,jwtDTO.getId()));
     }
 
+
     @GetMapping(value = "/getLastFiveArticleByType/{id}")
     public ResponseEntity<List<ArticleDTO>> getLastFiveArticleByType(@PathVariable("id") Integer articleId) {
         List<ArticleDTO> list = articleService.findLastFiveArticleByType(articleId);
         return ResponseEntity.ok(list);
     }
+
 
     @GetMapping(value = "/getLastThreeArticleByType/{id}")
     public ResponseEntity<List<ArticleDTO>> getLastThreeArticleByType(@PathVariable("id") Integer articleId) {
