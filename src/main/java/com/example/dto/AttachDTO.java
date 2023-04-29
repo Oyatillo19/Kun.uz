@@ -1,5 +1,6 @@
 package com.example.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AttachDTO {
     private String id;
+
+    @NotNull(message = "originalName empty")
     private String originalName;
     private String path;
     private Long size;

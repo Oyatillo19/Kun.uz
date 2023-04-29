@@ -1,6 +1,7 @@
 package com.example.dto;
 
 import com.example.enums.ArticleStatus;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,8 +15,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ArticleDTO {
     private String id;
+
+    @NotNull(message = "title empty")
     private String title;
+
+    @NotNull(message = "description empty")
     private String description;
+
+    @NotNull(message = "content empty")
     private String content;
     private Integer sharedCount;
     private Integer regionId;
