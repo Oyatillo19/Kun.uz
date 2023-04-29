@@ -24,18 +24,41 @@ public class ArticleEntity {
     private String content;
     @Column(name = "shared_count")
     private Integer sharedCount;
+
+    @Column(name = "region_id")
+    private Integer regionId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id")
+    @JoinColumn(name = "region_id",insertable = false, updatable = false)
     private RegionEntity region;
+
+
+    @Column(name = "category_id")
+    private Integer categoryId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id",insertable = false, updatable = false)
     private CategoryEntity category;
+
+
+    @Column(name = "moderator_id")
+    private Integer moderatorId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "moderator_id")
+    @JoinColumn(name = "moderator_id" ,insertable = false, updatable = false)
     private ProfileEntity moderator;
+
+
+    @Column(name = "publisher_id")
+    private Integer publisherId;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "publisher_id")
+    @JoinColumn(name = "publisher_id",insertable = false, updatable = false)
     private ProfileEntity publisher;
+
+
+    @Column(name = "attach_id")
+    private Integer attachId;
+    @ManyToOne
+    @JoinColumn(name = "naattach_id",insertable = false, updatable = false)
+    private AttachEntity attach;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "article_type")
     private ArticleTypeEntity articleType;
@@ -50,5 +73,7 @@ public class ArticleEntity {
     private Boolean visible;
     @Column(name = "view_count")
     private Integer viewCount;
+
+
 
 }
