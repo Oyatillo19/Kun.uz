@@ -1,4 +1,5 @@
-package com.example.dto;
+package com.example.dto.region;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryDTO {
+public class RegionDTO {
     private Integer id;
     private Integer key;
     private String nameUz;
@@ -20,4 +21,5 @@ public class CategoryDTO {
     private Boolean visible;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private Integer prtId;
 }

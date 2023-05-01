@@ -126,12 +126,17 @@ ADMIN, MODERATOR, PUBLISHER, USER
         published_date_from,published_date_to,moderator_id,publisher_id,status) with Pagination (PUBLISHER)
         ArticleShortInfo
 
+
+
     ArticleShortInfo
          id(uuid),title,description,image(id,url),published_date
     ArticleFullInfo
     id(uuid),title,description,content,shared_count,
         region(key,name),category(key,name),published_date,view_count,like_count,
         tagList(name)
+
+
+
 
 7. ArticleLike
     1. Like (ANY)
@@ -198,3 +203,8 @@ ADMIN, MODERATOR, PUBLISHER, USER
             (id, email,message,created_date)
 
        (!Should be limit for email sending. For 1 email 4 sms allowed during 1 minut. )
+
+
+
+       ADMIN BEARER
+eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MzU4MjQsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMwMjIyMjQsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.A_nIyrl1J_dgb6xW4VckwO5y38QbqsGnNG-doG55XSEp_gYXW93VU5vSUr0uQDCRH5snOlFdXTFY2ASi-8tyww

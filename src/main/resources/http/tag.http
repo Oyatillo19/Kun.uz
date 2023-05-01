@@ -1,0 +1,25 @@
+### Create tag
+POST localhost:8080/api/v1/tag
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MzU2NTEsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMwMjIwNTEsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.XGajYE-pa593y21eRvncJx3KvDDGWVdfbtb4t2B8paloLZWZ4lIyiFZJS7N-Q7IxUKaCnJV-K0ILBjABNj5iQw
+Content-Type:  application/json
+
+{
+  "name": "Alish"
+
+}
+
+### Update tag
+PUT localhost:8080/api/v1/tag/update
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MzU2NTEsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMwMjIwNTEsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.XGajYE-pa593y21eRvncJx3KvDDGWVdfbtb4t2B8paloLZWZ4lIyiFZJS7N-Q7IxUKaCnJV-K0ILBjABNj5iQw
+Content-Type:  application/json
+
+{
+  "id": "1",
+  "name": "o'zgardi sila"
+
+}
+
+### Get tag
+PUT localhost:8080/api/v1/t
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MzU2NTEsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMwMjIwNTEsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.XGajYE-pa593y21eRvncJx3KvDDGWVdfbtb4t2B8paloLZWZ4lIyiFZJS7N-Q7IxUKaCnJV-K0ILBjABNj5iQw
+Content-Type:  application/json

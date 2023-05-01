@@ -5,16 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.swing.*;
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmailDTO {
+public class TagDTO {
+
     private Integer id;
-    private String message;
-    private String email;
-    private LocalDateTime created_data;
+    private String name;
 }

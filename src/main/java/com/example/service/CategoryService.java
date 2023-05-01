@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.dto.CategoryDTO;
+import com.example.dto.category.CategoryDTO;
 import com.example.entity.CategoryEntity;
 import com.example.exps.AppBadRequestException;
 import com.example.exps.MethodNotAllowedException;

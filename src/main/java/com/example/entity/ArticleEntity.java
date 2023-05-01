@@ -54,9 +54,9 @@ public class ArticleEntity {
 
 
     @Column(name = "attach_id")
-    private Integer attachId;
+    private String attachId;
     @ManyToOne
-    @JoinColumn(name = "naattach_id",insertable = false, updatable = false)
+    @JoinColumn(name = "attach_id",insertable = false, updatable = false)
     private AttachEntity attach;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -74,6 +74,18 @@ public class ArticleEntity {
     @Column(name = "view_count")
     private Integer viewCount;
 
+
+    public ArticleEntity() {
+
+    }
+
+    public ArticleEntity(String id, String title, String description, String attachId, LocalDateTime publishedDate) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.attachId = attachId;
+        this.publishedDate = publishedDate;
+    }
 
 
 }

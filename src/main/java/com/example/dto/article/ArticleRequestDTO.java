@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.dto.article;
 
 
 import jakarta.validation.constraints.NotEmpty;
@@ -25,5 +25,5 @@ public class ArticleRequestDTO {
     private Integer categoryId;
 
    @NotEmpty (message = "content empty")
-    private List<Integer> typeList;
+    private Integer articleTypeId;
 }

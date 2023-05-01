@@ -1,8 +1,8 @@
 package com.example.service;
-import com.example.dto.AuthDTO;
-import com.example.dto.AuthResponseDTO;
-import com.example.dto.RegistrationDTO;
-import com.example.dto.RegistrationResponseDTO;
+import com.example.dto.auth.AuthDTO;
+import com.example.dto.auth.AuthResponseDTO;
+import com.example.dto.register.RegistrationDTO;
+import com.example.dto.register.RegistrationResponseDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.GeneralStatus;
 import com.example.enums.ProfileRole;

@@ -1,7 +1,7 @@
 package com.example.service;
 
 
-import com.example.dto.ArticleDTO;
+import com.example.dto.article.ArticleDTO;
 import com.example.entity.ArticleEntity;
 import com.example.enums.ArticleStatus;
 import com.example.exps.AppBadRequestException;
@@ -18,6 +18,9 @@ import java.util.Optional;
 public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
+
+    @Autowired
+    private AttachService attachService;
     @Autowired
     private CategoryService categoryService;
     @Autowired
@@ -104,6 +107,18 @@ public class ArticleService {
         return true;
     }
 
+    public Boolean changeStatus(ArticleStatus status, String id, Integer prtId) {
+        ArticleEntity entity = get(id);
+        if (status.equals(ArticleStatus.PUBLISHED)) {
+            entity.setPublishedDate(LocalDateTime.now());
+            entity.setPublisherId(prtId);
+        }
+        entity.setStatus(status);
+        articleRepository.save(entity);
+        // articleRepository.changeStatus(status, id);
+        return true;
+    }
+
     public List<ArticleDTO> findLastFiveArticleByType(Integer articleTypeId) {
         List<ArticleDTO> dtoList = convertToDTO(articleRepository.findLastFiveArticleByType(articleTypeId));
         return dtoList;
@@ -143,5 +158,17 @@ public class ArticleService {
         });
         return null;
     }
+
+//    public ArticleShortInfoDTO toArticleShortInfo(ArticleShortInfoMapper entity) {
+//        ArticleShortInfoDTO dto = new ArticleShortInfoDTO();
+//        dto.setId(entity.getId());
+//        dto.setTitle(entity.getTitle());
+//        dto.setDescription(entity.getDescription());
+//        dto.setPublishedDate(entity.getPublished_date());
+//        dto.setImage(attachService.getAttachLink(entity.getAttachId()));
+//        return dto;
+//    }
+
+
 
 }
