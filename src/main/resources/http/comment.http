@@ -1,0 +1,37 @@
+### Create Article
+POST localhost:8080/api/v1/comment
+Content-Type:  application/json
+
+{
+  "id": "1",
+  "updateDate": "2024-05-12",
+  "content": "Bir bor ekan bir yoq ekan",
+  "profileID": 2,
+  "content": "asdda",
+  "articleId": 2,
+  "articleTypeId": 1
+
+}
+
+### Update comment
+PUT localhost:8080/api/v1/tag/update
+Content-Type:  application/json
+
+{
+  "id": "1",
+  "createdDate": "2023-05-12",
+  "updateDate": "2024-05-12",
+  "content": "Bir bor ekan bir yoq ekan6",
+  "profileID": 2,
+  "content": "asdda",
+  "articleId": 2,
+  "visible": "FALSE",
+  "articleTypeId": 1
+}
+
+### Delete comment
+PUT localhost:8080/api/v1/article/delete/a0783608-31c6-4418-af76-e6f84227d9db
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODI5MzU2NTEsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODMwMjIwNTEsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.XGajYE-pa593y21eRvncJx3KvDDGWVdfbtb4t2B8paloLZWZ4lIyiFZJS7N-Q7IxUKaCnJV-K0ILBjABNj5iQw
+Content-Type:  application/json
+
+
