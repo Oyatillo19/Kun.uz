@@ -1,32 +1,32 @@
 ### Create Category
 POST localhost:8080/api/v1/category
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIwODY0MjgsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIxNzI4MjgsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.1M95AXImNj91615YCGyvIBZtdHXV_9hgC5RBA-ScctkNrMHzeZzJPIWdaH9MZfDJ0hwUZwWN7eZcjLi1ZliDIQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMzNjQyNTMsImlkIjo3LCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODM0NTA2NTMsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.6u8hK3dUO5bP0rWV2GiykN5dB49MbKhBFpu3rYFMQls3lTtqVFQbYk0Amnlk-wVihcrZgbdDGuT0N9F3LoHCVg
 Content-Type:  application/json
 
 //{
-//  "nameUz": "Mahalliy",
+//  "nameUz": "kanliy",
 //  "nameRu": "Местный",
 //  "nameEng": "Local",
 //  "visible": true
 //}
 //{
-//  "nameUz": "Jahon",
+//  "nameUz": "Biznes",
 //  "nameRu": "МИР",
 //  "nameEng": "World",
 //  "visible": true
 //}
 //{
-//  "nameUz": "IQTISODIYOT",
+//  "nameUz": "ILM",
 //  "nameRu": "ЭКОНОМИКА",
 //  "nameEng": "ECONOMY",
 //  "visible": true
 //}
-{
-  "nameUz": "FAN-TEXNIKA",
-  "nameRu": "НАУКА И ТЕХНОЛОГИЯ",
-  "nameEng": "SCIENCE AND TECHNOLOGY",
-  "visible": true
-}
+//{
+//  "nameUz": "FAN-TEXNIKA",
+//  "nameRu": "НАУКА И ТЕХНОЛОГИЯ",
+//  "nameEng": "SCIENCE AND TECHNOLOGY",
+//  "visible": true
+//}
 ### Update Category
 PUT localhost:8080/api/v1/category/update
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODIwODY0MjgsImlkIjoxLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIxNzI4MjgsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.1M95AXImNj91615YCGyvIBZtdHXV_9hgC5RBA-ScctkNrMHzeZzJPIWdaH9MZfDJ0hwUZwWN7eZcjLi1ZliDIQ

@@ -1,0 +1,31 @@
+-- CREATE TRIGGER order_insert_trigger  +
+--                          AFTER INSERT ON orders  +
+--                          FOR EACH ROW  +
+--                          INSERT INTO order_log (order_id, order_date)  +
+--                          VALUES (NEW.order_id, NEW.order_date)
+
+
+
+-- CREATE OR REPLACE FUNCTION comment_emotion_count_function()
+--     RETURNS TRIGGER
+--     LANGUAGE PLPGSQL
+-- AS
+-- $$
+-- BEGIN
+--     if TG_OP = 'INSERT'  then
+--         if NEW.status = 'LIKE'  then
+--             update comment set like_count = like_count + 1 where id = NEW.comment_id;
+--             return NEW;
+--         else
+--             update comment set dislike_count = dislike_count + 1 where id = NEW.comment_id;
+--             return NEW;
+--         end if;
+--     end if;
+-- END;
+-- $$;
+--
+-- CREATE TRIGGER comment_emotion_count_trigger
+--     BEFORE INSERT OR UPDATE
+--     ON comment_like
+--     FOR EACH ROW
+-- EXECUTE PROCEDURE comment_emotion_count_function();

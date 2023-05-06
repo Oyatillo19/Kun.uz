@@ -1,0 +1,3 @@
+### Create Article
+GET localhost:8080/api/v1/article_like/like/8fb8d1de-dec2-4114-9850-e4af41e3c9b5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODMzNjQyNTMsImlkIjo3LCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODM0NTA2NTMsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.6u8hK3dUO5bP0rWV2GiykN5dB49MbKhBFpu3rYFMQls3lTtqVFQbYk0Amnlk-wVihcrZgbdDGuT0N9F3LoHCVg
