@@ -19,14 +19,14 @@ public class ArticleTypeConrtoller {
     @Autowired
     private ArticleTypeService articleService;
 
-    @PostMapping({"", "/"})
+    @PostMapping("/private/create")
     public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO dto,
                                                  @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(articleService.create(dto, jwtDTO.getId()));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestBody ArticleTypeDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
@@ -43,7 +43,7 @@ public class ArticleTypeConrtoller {
     }
 
 
-    @PutMapping(value = "/delete/{id}")
+    @PutMapping(value = "private/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") Integer id) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);

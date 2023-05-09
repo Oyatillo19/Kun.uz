@@ -8,6 +8,8 @@ import com.example.dto.article.ArticleShortInfoDTO;
 import com.example.enums.ProfileRole;
 import com.example.service.ArticleService;
 import com.example.util.JwtUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,17 +22,18 @@ public class ArticleController {
     @Autowired
     private ArticleService articleService;
 
-    @PostMapping({"", "/"})
+    @PostMapping("priavte/create")
 
-    public ResponseEntity<ArticleDTO> create(@RequestBody ArticleDTO dto,
-                                             @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR);
-        return ResponseEntity.ok(articleService.create(dto, jwtDTO.getId()));
+    public ResponseEntity<ArticleDTO> create(@RequestBody @Valid  ArticleDTO dto,
+                                             HttpServletRequest request) {
+        JwtUtil.checkForRequiredRole(request,ProfileRole.MODERATOR);
+        Integer prtId=(Integer) request.getAttribute("id");
+        return ResponseEntity.ok(articleService.create(dto,prtId));
     }
 
 
 
-    @PutMapping (value = "/update")
+    @PutMapping (value = "/private/update")
     public ResponseEntity<?> update(@RequestBody ArticleDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR);
@@ -38,7 +41,7 @@ public class ArticleController {
     }
 
 
-    @PutMapping(value = "/delete/{id}")
+    @PutMapping(value = "/private/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") String id) {
         JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR);
@@ -46,7 +49,7 @@ public class ArticleController {
     }
 
 
-    @PutMapping(value = "/changeStatus/{id}")
+    @PutMapping(value = "/private/changeStatus/{id}")
     public ResponseEntity<?> changeStatus(@RequestHeader("Authorization") String authorization,
                                           @PathVariable("id") String id) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.PUBLISHER);
@@ -66,6 +69,8 @@ public class ArticleController {
         List<ArticleDTO> list = articleService.findLastThreeArticleByType(articleId);
         return ResponseEntity.ok(list);
     }
+
+
 
     
 

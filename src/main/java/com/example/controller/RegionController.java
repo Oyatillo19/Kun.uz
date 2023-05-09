@@ -20,14 +20,14 @@ public class RegionController {
     @Autowired
     private RegionService regionService;
 
-    @PostMapping({"", "/"})
+    @PostMapping("/private/create")
     public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO dto,
                                             @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(regionService.create(dto, jwtDTO.getId()));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestBody RegionDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
@@ -43,7 +43,7 @@ public class RegionController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping(value = "/delete/{id}")
+    @PutMapping(value = "/private/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") Integer id) {
         JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);

@@ -19,14 +19,14 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-    @PostMapping({"", "/"})
+    @PostMapping("/private/create")
     public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
                                              @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.create(dto, jwtDTO.getId()));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestHeader("Authorization") String authorization,
                                     @RequestBody ProfileDTO dto) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
@@ -42,7 +42,7 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.updateOwnProfile(jwtDTO.getId(), dto));
     }
 
-    @PutMapping(value = "/paging")
+    @PutMapping(value = "/private/paging")
     public ResponseEntity<Page<ProfileDTO>> paging(@RequestHeader("Authorization") String authorization,
                                                    @RequestParam(value = "page", defaultValue = "1") int page,
                                                    @RequestParam(value = "size", defaultValue = "2") int size) {
@@ -63,7 +63,7 @@ public class ProfileController {
         return ResponseEntity.ok(dto);
     }
 
-    @PutMapping(value = "/delete/{id}")
+    @PutMapping(value = "/private/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") Integer id) {
         JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);

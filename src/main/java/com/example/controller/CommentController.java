@@ -30,7 +30,7 @@ public class CommentController {
         return ResponseEntity.ok(commentService.update(dto,id));
     }
 
-    @PutMapping(value = "/delete/{id}")
+    @PutMapping(value = "/private/delete/{id}")
     public ResponseEntity<?> delete(@RequestHeader("Authorization") String authorization,
                                     @PathVariable("id") String id) {
         JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.ADMIN);
