@@ -13,7 +13,7 @@ Content-Type:  application/json
 }
 
 ### Update profile
-PUT localhost:8080/api/v1/profile/update/1
+PUT localhost:8080/api/v1/profile/1
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODE5NzEzMzIsImlkIjoyLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODIwNTc3MzIsImlzcyI6Ikt1bnV6IHRlc3QgcG9ydGFsaSJ9.T4wEYXxTqq3K5Na2j1Kg4xOuFtpYYlT_4ifLVEmKrRd4iyQ3gKjbFQA6RRjE5VaUbUo0SVIg7vkyYDnNsS-GmQ
 Content-Type:  application/json
 

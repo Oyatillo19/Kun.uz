@@ -6,8 +6,8 @@ import com.example.dto.register.RegistrationResponseDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.GeneralStatus;
 import com.example.enums.ProfileRole;
-import com.example.exps.AppBadRequestException;
-import com.example.exps.ItemNotFoundException;
+import com.example.exp.AppBadRequestException;
+import com.example.exp.ItemNotFoundException;
 import com.example.repository.ProfileRepository;
 import com.example.util.JwtUtil;
 import com.example.util.MD5Util;
@@ -38,8 +38,7 @@ public class AuthService {
         AuthResponseDTO responseDTO = new AuthResponseDTO();
         responseDTO.setName(entity.getName());
         responseDTO.setSurname(entity.getSurname());
-        responseDTO.setRole(entity.getRole());
-        responseDTO.setJwt(JwtUtil.encode(entity.getId(), entity.getRole()));
+        responseDTO.setJwt(JwtUtil.encode(null, entity.getRole()));
         return responseDTO;
     }
     /*

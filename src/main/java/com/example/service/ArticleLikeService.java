@@ -26,8 +26,7 @@ public class ArticleLikeService {
     }
 
     public boolean delete(String articleId, Integer profileId) {
-        articleLikeRepository.delete(articleId, profileId);
-        return true;
+
     }
 
     private void makeEmotion(String articleId, Integer profileId, EmotionStatus status) {

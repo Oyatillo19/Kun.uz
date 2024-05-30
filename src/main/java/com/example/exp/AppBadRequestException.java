@@ -1,4 +1,4 @@
-package com.example.exps;
+package com.example.exp;
 
 public class AppBadRequestException extends RuntimeException{
     public AppBadRequestException(String message) {

@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer>, PagingAndSortingRepository<ProfileEntity, Integer> {
 
     Optional<ProfileEntity> findByEmailAndPasswordAndVisible(String login, String md5Hash, boolean b);
+    Optional<ProfileEntity> findById(Integer id);
 
     Optional<ProfileEntity> findByEmailAndPassword(String email, String password);
 
@@ -24,4 +25,6 @@ public interface ProfileRepository extends CrudRepository<ProfileEntity, Integer
 
 
     Optional<ProfileEntity> findByEmail(String email);
+
+     getbyID( );
 }

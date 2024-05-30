@@ -23,14 +23,14 @@ public class ProfileController {
     public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
                                              @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(profileService.create(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(profileService.create(dto, null));
     }
 
     @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestHeader("Authorization") String authorization,
                                     @RequestBody ProfileDTO dto) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(profileService.update(jwtDTO.getId(), dto));
+        return ResponseEntity.ok(profileService.update(null, dto));
     }
 
     @PutMapping(value = "/updateByProfile")
@@ -39,7 +39,7 @@ public class ProfileController {
         String[] str = authorization.split(" ");
         String jwt = str[1];
         JwtDTO jwtDTO = JwtUtil.decode(jwt);
-        return ResponseEntity.ok(profileService.updateOwnProfile(jwtDTO.getId(), dto));
+        return ResponseEntity.ok(profileService.updateOwnProfile(null, dto));
     }
 
     @PutMapping(value = "/private/paging")

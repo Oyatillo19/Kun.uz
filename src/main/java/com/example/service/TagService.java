@@ -5,9 +5,8 @@ import com.example.dto.profile.ProfileDTO;
 import com.example.entity.ArticleEntity;
 import com.example.entity.ProfileEntity;
 import com.example.entity.TagEntity;
-import com.example.enums.ArticleStatus;
-import com.example.exps.AppBadRequestException;
-import com.example.exps.MethodNotAllowedException;
+
+import com.example.exp.AppBadRequestException;
 import com.example.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

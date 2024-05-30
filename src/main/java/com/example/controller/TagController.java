@@ -24,14 +24,14 @@ public class TagController {
     public ResponseEntity<TagDTO> create(@RequestBody TagDTO dto,
                                          @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR,ProfileRole.ADMIN);
-        return ResponseEntity.ok(tagService.create(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(tagService.create(dto, null));
     }
 
     @PutMapping (value = "/update")
     public ResponseEntity<?> update(@RequestBody TagDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTOForArticle(authorization, ProfileRole.MODERATOR,ProfileRole.ADMIN);
-        return ResponseEntity.ok(tagService.update(dto,jwtDTO.getId()));
+        return ResponseEntity.ok(tagService.update(dto,null));
     }
 
     @PutMapping(value = "/delete/{id}")

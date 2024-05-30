@@ -8,13 +8,11 @@ import com.example.entity.CommentEntity;
 import com.example.entity.CommentLikeEntity;
 import com.example.enums.ArticleStatus;
 import com.example.enums.CommentLikeEnum;
-import com.example.exps.MethodNotAllowedException;
+import com.example.exp.MethodNotAllowedException;
 import com.example.repository.CommentLikeRepository;
 import com.example.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 

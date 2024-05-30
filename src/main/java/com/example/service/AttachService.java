@@ -1,9 +1,7 @@
 package com.example.service;
-
 import com.example.dto.attach.AttachDTO;
 import com.example.entity.AttachEntity;
 
-import com.example.exps.ItemNotFoundException;
 import com.example.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,22 +68,6 @@ public class AttachService {
         return fileName.substring(lastIndex + 1);
     }
 
-    public byte[] loadImage(String fileName) {
-        byte[] imageInByte;
-
-        BufferedImage originalImage;
-        try {
-            originalImage = ImageIO.read(new File("attaches/" + fileName));
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(originalImage, "png", baos);
-            baos.flush();
-            imageInByte = baos.toByteArray();
-            baos.close();
-            return imageInByte;
-        } catch (Exception e) {
-            return new byte[0];
-        }
-    }
     public byte[] open_general(String attachName) {
         byte[] data;
         try {
@@ -97,7 +79,6 @@ public class AttachService {
         }
         return new byte[0];
     }
-
     public String save(MultipartFile file) {
         try {
             String pathFolder = getYmDString(); // 2022/04/23
@@ -126,6 +107,23 @@ public class AttachService {
         return null;
     }
 
+    public byte[] loadImage(String fileName) {
+        byte[] imageInByte;
+
+        BufferedImage originalImage;
+        try {
+            originalImage = ImageIO.read(new File("attaches/" + fileName));
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(originalImage, "png", baos);
+            baos.flush();
+            imageInByte = baos.toByteArray();
+            baos.close();
+            return imageInByte;
+        } catch (Exception e) {
+            return new byte[0];
+        }
+    }
+
     public byte[] open_general2(String attachName) {
         // 20f0f915-93ec-4099-97e3-c1cb7a95151f.jpg
         int lastIndex = attachName.lastIndexOf(".");
@@ -144,9 +142,15 @@ public class AttachService {
 
     public AttachEntity get(String id) {
         return attachRepository.findById(id).orElseThrow(() -> {
-            throw new ItemNotFoundException("Attach not ound");
+            try {
+                throw new ItemNotFoundException("Attach not ound");
+            } catch (ItemNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
+
     }
+
     public String getYmDString() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;

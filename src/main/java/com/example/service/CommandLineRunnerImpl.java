@@ -22,25 +22,27 @@ public class CommandLineRunnerImpl  implements CommandLineRunner {
 
     @Autowired
     private DataSource dataSource;
+
     @Override
     public void run(String... args) throws Exception {
 
         Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load().migrate();
-//        String email = "adminjon@gmail.com";
-//        Optional<ProfileEntity> profileEntity = profileRepository.findByEmail(email);
-//        if (profileEntity.isEmpty()) {
-//            ProfileEntity entity = new ProfileEntity();
-//            entity.setName("aaaa");
-//            entity.setSurname("aaaa");
-//            entity.setPhone("1234567");
-//            entity.setEmail(email);
-//            entity.setRole(ProfileRole.ADMIN);
-//            entity.setPassword(MD5Util.getMd5Hash("123321"));
-//            entity.setStatus(GeneralStatus.ACTIVE);
-//            profileRepository.save(entity);
-//            System.out.println("Admin created");
+        String email = "mol@gmail.com";
+        Optional<ProfileEntity> profileEntity = profileRepository.findByEmail(email);
+        if (profileEntity.isEmpty()) {
+            ProfileEntity entity = new ProfileEntity();
+            entity.setName("aaaa");
+            entity.setSurname("aaaa");
+            entity.setPhone("000");
+            entity.setEmail(email);
+            entity.setRole(ProfileRole.ADMIN);
+            entity.setPassword(MD5Util.getMd5Hash("000"));
+            entity.setStatus(GeneralStatus.ACTIVE);
+            profileRepository.save(entity);
+            System.out.println("Admin created");
         }
 
 
     }
+}
 

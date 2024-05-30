@@ -23,14 +23,14 @@ public class ArticleTypeConrtoller {
     public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO dto,
                                                  @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(articleService.create(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(articleService.create(dto, null));
     }
 
     @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestBody ArticleTypeDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(articleService.update(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(articleService.update(dto, null));
     }
 
     @PutMapping(value = "/paging")

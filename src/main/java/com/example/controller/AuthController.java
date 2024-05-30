@@ -20,19 +20,11 @@ public class AuthController {
     public ResponseEntity<AuthResponseDTO> login(@RequestBody AuthDTO dto) {
         return ResponseEntity.ok(authService.login(dto));
     }
-    /*
-    @PostMapping("register")
-     public ResponseEntity<ProfileDTO> register(@RequestBody ProfileDTO dto) {
-         return ResponseEntity.ok(authService.register(dto));
-     }
-     */
+
     @PostMapping("/register")
     public ResponseEntity<RegistrationResponseDTO> registration(@RequestBody RegistrationDTO dto) {
         return ResponseEntity.ok(authService.registration(dto));
     }
-    @GetMapping("/verification/{email}")
-    public ResponseEntity<RegistrationResponseDTO> verification(@PathVariable("email") String text) {
-        return ResponseEntity.ok(authService.emailVerification(text));
-    }
+
 
 }

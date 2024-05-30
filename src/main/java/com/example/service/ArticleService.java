@@ -4,11 +4,12 @@ package com.example.service;
 import com.example.dto.article.ArticleDTO;
 import com.example.entity.ArticleEntity;
 import com.example.enums.ArticleStatus;
-import com.example.exps.AppBadRequestException;
-import com.example.exps.MethodNotAllowedException;
+
 import com.example.repository.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.MethodNotAllowedException;
+
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,7 +40,6 @@ public class ArticleService {
         entity.setSharedCount(dto.getSharedCount());
         entity.setCategory(categoryService.get(dto.getCategoryId()));
         entity.setRegion(regionService.get(dto.getRegionId()));
-        entity.setModerator(profileService.get(id));
         entity.setArticleType(articleTypeService.get(dto.getArticleTypeId()));
         entity.setCreatedDate(LocalDateTime.now());
         entity.setVisible(Boolean.FALSE);
@@ -52,9 +52,7 @@ public class ArticleService {
 
     public void isValidProfile(ArticleDTO dto) {
         Optional<ArticleEntity> optional = articleRepository.findAllByTitle(dto.getTitle());
-        if (optional.isPresent()) {
-            throw new MethodNotAllowedException("This Article already use :)");
-        }
+
     }
 
 
@@ -66,7 +64,6 @@ public class ArticleService {
         entity.setSharedCount(dto.getSharedCount());
         entity.setCategory(categoryService.get(dto.getCategoryId()));
         entity.setRegion(regionService.get(dto.getRegionId()));
-        entity.setModerator(profileService.get(id));
         entity.setArticleType(articleTypeService.get(dto.getArticleTypeId()));
         entity.setCreatedDate(LocalDateTime.now());
         entity.setVisible(Boolean.FALSE);
@@ -78,18 +75,13 @@ public class ArticleService {
 
     public ArticleEntity get(String id) {
         Optional<ArticleEntity> optional = articleRepository.findById(id);
-        if (optional.isEmpty()) {
-            throw new AppBadRequestException("Article not found: " + id);
-        }
-        return optional.get();
+ return null;
     }
 
 
     public Boolean delete(String id) {
         ArticleEntity entity = get(id);
-        if (entity == null) {
-            throw new MethodNotAllowedException("Article not found:)");
-        }
+
         articleRepository.changeVisible(Boolean.FALSE, ArticleStatus.NOTPUBLISHED, id);
         return true;
     }
@@ -97,10 +89,7 @@ public class ArticleService {
 
     public Boolean changeStatus(String id, Integer publisherId) {
         ArticleEntity entity = get(id);
-        if (entity == null) {
-            throw new MethodNotAllowedException("Article not found:)");
-        }
-        entity.setPublisher(profileService.get(publisherId));
+
         entity.setPublishedDate(LocalDateTime.now());
         entity.setStatus(ArticleStatus.PUBLISHED);
         articleRepository.changeStatus(Boolean.TRUE, ArticleStatus.PUBLISHED, id);

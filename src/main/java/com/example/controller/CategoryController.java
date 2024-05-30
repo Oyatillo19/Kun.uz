@@ -24,14 +24,14 @@ public class CategoryController {
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO dto,
                                               @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(categoryService.create(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(categoryService.create(dto, null));
     }
 
     @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestBody CategoryDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(categoryService.update(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(categoryService.update(dto, null));
     }
 
     @PutMapping(value = "/paging")

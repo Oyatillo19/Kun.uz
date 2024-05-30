@@ -1,20 +1,21 @@
 ### Login
-POST localhost:8080/api/v1/auth/login
+POST localhost:8081/api/v1/auth/login
 Content-Type:  application/json
 
 {
-  "email": "adminjon@gmail.com",
-  "password": "123321"
+  "email": "mol@gmail.com",
+  "password": "000"
 }
 
 ### Auth
-POST localhost:8080/api/v1/auth/register
+POST localhost:8081/api/v1/auth/register
 Content-Type:  application/json
 
 {
-  "name": "Ketmon ",
-  "email": "ketmon@mail.ru",
-  "phone": "1",
-  "password": "1",
+  "name": "mol ",
+  "email": "mol@mail.ru",
+  "phone": "000",
+  "password": "000",
+  "password": "000",
   "role": "ADMIN"
 }

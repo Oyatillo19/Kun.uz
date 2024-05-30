@@ -24,14 +24,14 @@ public class RegionController {
     public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO dto,
                                             @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(regionService.create(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(regionService.create(dto, null));
     }
 
     @PutMapping(value = "/private/update")
     public ResponseEntity<?> update(@RequestBody RegionDTO dto,
                                     @RequestHeader("Authorization") String authorization) {
         JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(regionService.update(dto, jwtDTO.getId()));
+        return ResponseEntity.ok(regionService.update(dto, null));
     }
 
     @PutMapping(value = "/paging")

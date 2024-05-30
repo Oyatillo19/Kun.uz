@@ -62,6 +62,7 @@ public class ArticleEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "article_type")
     private ArticleTypeEntity articleType;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ArticleStatus status;

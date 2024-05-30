@@ -5,12 +5,13 @@ import com.example.dto.profile.ProfileDTO;
 import com.example.entity.ProfileEntity;
 import com.example.enums.GeneralStatus;
 import com.example.enums.ProfileRole;
-import com.example.exps.AppBadRequestException;
-import com.example.exps.MethodNotAllowedException;
+
+import com.example.exp.MethodNotAllowedException;
 import com.example.repository.ProfileRepository;
 import com.example.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -54,7 +55,7 @@ public class ProfileService {
     }
 
     public boolean update(Integer adminId, ProfileDTO dto) {
-        ProfileEntity entity = get(dto.getId());
+        ProfileEntity entity = getById(dto.getId());
         entity.setName(dto.getName());
         entity.setSurname(dto.getSurname());
         entity.setPhone(dto.getPhone());
@@ -80,6 +81,10 @@ public class ProfileService {
         entity.setPrtId(id);
         profileRepository.save(entity);
         return true;
+    }
+
+
+
     }
 
     public List<ProfileDTO> getAll() {
@@ -125,14 +130,13 @@ public class ProfileService {
         ProfileDTO dto = convertToDTO(entity);
         return dto;
     }
+    public  ProfileEntity get(Integer id){
+        ProfileEntity entity=getById(id);
 
-    public ProfileEntity get(Integer id) {
-        Optional<ProfileEntity> optional = profileRepository.findById(id);
-        if (optional.isEmpty()) {
-            throw new AppBadRequestException("Profile not found: " + id);
-        }
-        return optional.get();
+        return entity;
+
     }
+
 
     public List<ProfileDTO> getdtoList(Iterable<ProfileEntity> dtos) {
         List<ProfileDTO> dtoList = new LinkedList<>();

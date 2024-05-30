@@ -2,12 +2,12 @@ package com.example.service;
 
 import com.example.dto.category.CategoryDTO;
 import com.example.entity.CategoryEntity;
-import com.example.exps.AppBadRequestException;
-import com.example.exps.MethodNotAllowedException;
+import com.example.exp.AppBadRequestException;
 import com.example.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import com.example.exp.MethodNotAllowedException;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -36,7 +36,7 @@ public class CategoryService {
     public void isValidProfile(CategoryDTO dto) {
         Optional<CategoryEntity> optional = categoryRepository.findByNameUzAndNameRuAndNameEng(dto.getNameUz(), dto.getNameRu(),dto.getNameEng());
         if (optional.isPresent()) {
-            throw new MethodNotAllowedException("This Name already use :)");
+            throw new MethodNotAllowedException("medjnnkxdsk");
         }
     }
 

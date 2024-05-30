@@ -19,21 +19,21 @@ public class ArticleLikeController {
     public ResponseEntity<Boolean> like(@PathVariable("id") String articleId,
                                         @RequestHeader("Authorization") String authorization) {
         JwtDTO jwt = JwtUtil.getJwtDTO(authorization);
-        return ResponseEntity.ok(articleLikeService.like(articleId, jwt.getId()));
+        return ResponseEntity.ok(articleLikeService.like(articleId, null));
     }
 
     @GetMapping("/dislike/{id}")
     public ResponseEntity<Boolean> dislike(@PathVariable("id") String articleId,
                                            @RequestHeader("Authorization") String authorization) {
         JwtDTO jwt = JwtUtil.getJwtDTO(authorization);
-        return ResponseEntity.ok(articleLikeService.dislike(articleId, jwt.getId()));
+        return ResponseEntity.ok(articleLikeService.dislike(articleId, null));
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") String articleId,
                                           @RequestHeader("Authorization") String authorization) {
         JwtDTO jwt = JwtUtil.getJwtDTO(authorization);
-        return ResponseEntity.ok(articleLikeService.delete(articleId, jwt.getId()));
+        return ResponseEntity.ok(articleLikeService.delete(articleId, null));
     }
 
 }
