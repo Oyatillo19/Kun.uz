@@ -25,9 +25,9 @@ public class ArticleLikeService {
         return true;
     }
 
-    public boolean delete(String articleId, Integer profileId) {
-
-    }
+//    public boolean delete(String articleId, Integer profileId) {
+//
+//    }
 
     private void makeEmotion(String articleId, Integer profileId, EmotionStatus status) {
         Optional<ArticleLikeEntity> optional = articleLikeRepository

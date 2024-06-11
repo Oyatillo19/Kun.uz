@@ -29,11 +29,11 @@ public class ArticleLikeController {
         return ResponseEntity.ok(articleLikeService.dislike(articleId, null));
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") String articleId,
-                                          @RequestHeader("Authorization") String authorization) {
-        JwtDTO jwt = JwtUtil.getJwtDTO(authorization);
-        return ResponseEntity.ok(articleLikeService.delete(articleId, null));
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity<Boolean> delete(@PathVariable("id") String articleId,
+//                                          @RequestHeader("Authorization") String authorization) {
+//        JwtDTO jwt = JwtUtil.getJwtDTO(authorization);
+//        return ResponseEntity.ok(articleLikeService.delete(articleId, null));
+//    }
 
 }

@@ -2,6 +2,7 @@ package com.example.service;
 import com.example.dto.attach.AttachDTO;
 import com.example.entity.AttachEntity;
 
+import com.example.exp.ItemNotFoundException;
 import com.example.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

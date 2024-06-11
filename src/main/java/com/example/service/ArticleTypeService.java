@@ -2,6 +2,8 @@ package com.example.service;
 
 import com.example.dto.article.ArticleTypeDTO;
 import com.example.entity.ArticleTypeEntity;
+import com.example.exp.AppBadRequestException;
+import com.example.exp.MethodNotAllowedException;
 import com.example.repository.ArticleTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;

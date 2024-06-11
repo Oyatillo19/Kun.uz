@@ -6,6 +6,7 @@ import com.example.entity.ProfileEntity;
 import com.example.enums.GeneralStatus;
 import com.example.enums.ProfileRole;
 
+import com.example.exp.AppBadRequestException;
 import com.example.exp.MethodNotAllowedException;
 import com.example.repository.ProfileRepository;
 import com.example.util.MD5Util;
@@ -54,21 +55,21 @@ public class ProfileService {
         }
     }
 
-    public boolean update(Integer adminId, ProfileDTO dto) {
-        ProfileEntity entity = getById(dto.getId());
-        entity.setName(dto.getName());
-        entity.setSurname(dto.getSurname());
-        entity.setPhone(dto.getPhone());
-        entity.setEmail(dto.getEmail());
-        entity.setRole(dto.getRole());
-        entity.setPassword(MD5Util.getMd5Hash(dto.getPassword()));
-        entity.setUpdatedDate(LocalDateTime.now());
-        entity.setVisible(dto.getVisible());
-        entity.setPrtId(adminId);
-        entity.setStatus(dto.getStatus());
-        profileRepository.save(entity);
-        return true;
-    }
+//    public boolean update(Integer adminId, ProfileDTO dto) {
+//        ProfileEntity entity = getById(dto.getId());
+//        entity.setName(dto.getName());
+//        entity.setSurname(dto.getSurname());
+//        entity.setPhone(dto.getPhone());
+//        entity.setEmail(dto.getEmail());
+//        entity.setRole(dto.getRole());
+//        entity.setPassword(MD5Util.getMd5Hash(dto.getPassword()));
+//        entity.setUpdatedDate(LocalDateTime.now());
+//        entity.setVisible(dto.getVisible());
+//        entity.setPrtId(adminId);
+//        entity.setStatus(dto.getStatus());
+//        profileRepository.save(entity);
+//        return true;
+//    }
 
     public boolean updateOwnProfile(Integer id, ProfileDTO dto) {
         ProfileEntity entity = get(id);
@@ -83,9 +84,16 @@ public class ProfileService {
         return true;
     }
 
-
-
+    public ProfileEntity get(Integer id) {
+        Optional<ProfileEntity> optional = profileRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new AppBadRequestException("Profile not found: " + id);
+        }
+        return optional.get();
     }
+
+
+
 
     public List<ProfileDTO> getAll() {
         List<ProfileDTO> dtoList = getdtoList(profileRepository.findAll());
@@ -130,12 +138,7 @@ public class ProfileService {
         ProfileDTO dto = convertToDTO(entity);
         return dto;
     }
-    public  ProfileEntity get(Integer id){
-        ProfileEntity entity=getById(id);
 
-        return entity;
-
-    }
 
 
     public List<ProfileDTO> getdtoList(Iterable<ProfileEntity> dtos) {

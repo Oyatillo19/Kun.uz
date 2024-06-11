@@ -26,12 +26,12 @@ public class ProfileController {
         return ResponseEntity.ok(profileService.create(dto, null));
     }
 
-    @PutMapping(value = "/private/update")
-    public ResponseEntity<?> update(@RequestHeader("Authorization") String authorization,
-                                    @RequestBody ProfileDTO dto) {
-        JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
-        return ResponseEntity.ok(profileService.update(null, dto));
-    }
+//    @PutMapping(value = "/private/update")
+//    public ResponseEntity<?> update(@RequestHeader("Authorization") String authorization,
+//                                    @RequestBody ProfileDTO dto) {
+//        JwtDTO jwtDTO = JwtUtil.getJwtDTO(authorization, ProfileRole.ADMIN);
+//        return ResponseEntity.ok(profileService.update(null, dto));
+//    }
 
     @PutMapping(value = "/updateByProfile")
     public ResponseEntity<?> updateByProfile(@RequestHeader("Authorization") String authorization,

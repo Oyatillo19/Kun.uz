@@ -4,7 +4,7 @@ import com.example.dto.JwtDTO;
 
 import com.example.enums.ProfileRole;
 
-import com.example.exps.MethodNotAllowedException;
+import com.example.exp.MethodNotAllowedException;
 import io.jsonwebtoken.*;
 import jakarta.servlet.http.HttpServletRequest;
 
